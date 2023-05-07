@@ -2,7 +2,7 @@ import React from 'react'
 
 function Body(){
 
-    const [text, setText] = React.useState("He was Killed")
+    const [text, setText] = React.useState("On the train we swapped seats You wanted to look outside and i wanted to look at you")
     const code = `
     <py-script>
         from algo import predict_t 
@@ -28,8 +28,8 @@ function Body(){
     // }
     return (
         <div className = "pg-body">
-            <input className = "search-bar" type = "text" placeholder="Text" defaultValue={"He was Killed"} onChange={textHandler}></input>
-            <div className = "res"><label id = "result"></label></div>
+            <input className = "search-bar" type = "text" placeholder="Text" defaultValue={"On the train we swapped seats You wanted to look outside and i wanted to look at you"} onChange={textHandler}></input>
+            <div className = "res"><label id = "result" defaultValue="joy"></label></div>
             <div dangerouslySetInnerHTML={{__html: pys}} />
             {/* <button className = "find"  onClick = {reload}>Find</button> */}
         </div>
