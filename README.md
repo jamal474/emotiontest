@@ -14,4 +14,5 @@ This website is using a Machine Learning model that is trained using **Scikit-le
 2. PyScript
 3. HTML
 4. CSS
-5. JavaScript
+5. Python
+6. JavaScript
