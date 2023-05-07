@@ -14,11 +14,13 @@
     <title>Emotion Detection</title>
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <py-config type="toml">
-      packages = ["scikit-learn"]
-
-      [[fetch]]
-      files = ["./algo.py","./data.txt"]
+    <py-config type="json">
+      {
+        "packages" : ["scikit-learn"],
+        "fetch" : [{
+          "files": ["algo.py", "data.txt"]
+        }]
+      }
   </py-config>
   </head>
   <body>
