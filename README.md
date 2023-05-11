@@ -1,4 +1,4 @@
-![final product](./banner.png)
+![final product](https://github.com/jamal474/emotiontest/blob/dda2b13b06cd332769377c6ad92b5f28e533441a/banner.png)
 ## Live Project
 [**Click Here**](https://textemotion.mdshabbirjamal.one/)
 
