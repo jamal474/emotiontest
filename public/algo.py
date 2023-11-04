@@ -48,9 +48,17 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # Creating the Model
 lsvc = LinearSVC(max_iter=100000,random_state=123)
-lsvc.fit(X_train, y_train)
+lsvc.fit(X, y)
+
+# import joblib
+
+# saved_mode = 'model.pkl'
+# joblib.dump(lsvc, saved_mode)
+# joblib.dump(tfidf , 'vectorizer.pkl')
 
 def predict_t(text):
     X_new = tfidf.transform([text])
     y_new = lsvc.predict(X_new)
     return y_new
+
+
