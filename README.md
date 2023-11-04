@@ -1,5 +1,8 @@
-# 🫀Text Emotion Detection
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2faa6ea7-64dc-4233-aae2-a75675484d2b/deploy-status)](https://app.netlify.com/sites/textemotiondetection/deploys)
+<h1 align="center">Text Emotion Detection</h1>
+<p align="center">
+  <a href = "http://hits.dwyl.com/jamal474/emotiontest"><img alt="Version" src="https://hits.dwyl.com/jamal474/emotiontest.svg?style=flat"/></a>
+  <a href = "https://app.netlify.com/sites/textemotiondetection/deploys"><img src = "https://api.netlify.com/api/v1/badges/2faa6ea7-64dc-4233-aae2-a75675484d2b/deploy-status"/></a>
+</p>
 
 ## Description
 **Emotion detection using text**
@@ -11,10 +14,11 @@ This website is using a Machine Learning model that is trained using **Scikit-le
 ## Live Project
 [**Click Here**](https://textemotion.mdshabbirjamal.one/)
 
-## Tech Stack
-1. ReactJS 
-2. PyScript
-3. HTML
-4. CSS
-5. Python
-6. JavaScript
+## Technologies Used
+#### ``ReactJS`` ``PyScript.js`` ``HTML`` ``CSS`` ``Python`` ``JavaScript``
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
