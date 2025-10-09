@@ -7,28 +7,14 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" className="favicon">
   <meta name="description"
     content="Emotion detection using text, the ML model used is Linear Support Vector Classifier. Feature extraction was done using tf-idf vectorizer with 2-gram as parameter. The testing Accuracy is 61%." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;500;600;700&display=swap"
-    rel="stylesheet">
   <title>Emotion Detection</title>
-  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-  <py-config type="json">
-    {
-    "packages" : ["scikit-learn"],
-    "fetch" : [{
-    "files": ["algo.py", "data.txt"]
-    }],
-    "splashscreen": {
-    "enabled": false
-    }
-    }
-  </py-config>
+
+  <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css">
+  <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;400;500;600;700&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <meta name='description' content="Detect emotions like joy, hate, anger etc from Text | Machine Learning" />
   <meta property="og:site_name" content="Detect Emotion" />
@@ -38,7 +24,7 @@
   <meta property="og:image" content="favicon.ico" />
   <meta property="og:description" content="Detect emotions like joy, hate, anger etc from Text | Machine Learning" />
 
-  <meta name="twitter:creator" content="@2lamahribbahs" />
+  <meta name="twitter:creator" content="@lamahribbahs" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Emotion Detection" />
   <meta name="twitter:image" content="favicon.ico" />
@@ -48,6 +34,7 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/index.jsx"></script>
+  <script type="py" src="./main.py" config="./pyscript.json"></script>
 </body>
 
 </html>
