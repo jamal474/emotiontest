@@ -31,5 +31,5 @@ def run_prediction(event):
         return
 
     emotion = predict_t(text)
-    output_div.innerText = emotion
+    output_div.innerText = "Emotion : " + emotion
     

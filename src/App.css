@@ -1,136 +1,76 @@
-* {
-  box-sizing: border-box;
-}
-html, body {
-  padding : 0px;
-  margin : 0px;
-  background-color: #FFC700; 
-  color : black;
-  overflow-x : hidden;
-  overflow-y: hidden;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(96.79% 0.0654 102.26);
+  --secondary-background: oklch(100% 0 0);
+  --foreground: oklch(0% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --main: oklch(86.03% 0.176 92.36);
+  --border: oklch(0% 0 0);
+  --ring: oklch(0% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #FACC00;
+  --chart-2: #7A83FF;
+  --chart-3: #FF4D50;
+  --chart-4: #00D696;
+  --chart-5: #0099FF;
+  --chart-active-dot: #000;
 }
 
-a{
-    text-decoration: inherit;
-    color: inherit;
-}
-a:hover {
-  cursor : pointer;
-  color : rgb(0, 0, 87);
-}
-
-.pg-body {
-  background-image: url("./Assets/Images/31.svg");
-  background-repeat: no-repeat;
-  background-size: 70%;
-  background-position: center;
-  width: 100vw;
-  height : 80vh;
-  margin-top : 20px;
-
-  display : flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.dark {
+  --background: oklch(29.28% 0.0373 94.38);
+  --secondary-background: oklch(23.93% 0 0);
+  --foreground: oklch(92.49% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --main: oklch(79.36% 0.1624 92.49);
+  --border: oklch(0% 0 0);
+  --ring: oklch(100% 0 0);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #E0B700;
+  --chart-2: #7A83FF;
+  --chart-3: #FF6669;
+  --chart-4: #00BD84;
+  --chart-5: #008AE5;
+  --chart-active-dot: #fff;
 }
 
-.text-input{
-  width : 70vw;
-  height : 60px;
-  border : 2px solid black;
-  padding-left : 10px;
-  font-family: "Roboto Mono";
-  font-size: 20px;
-  font-weight: 700;
-  color : rgb(0, 0, 87);
-  background: rgba(250,250,250,0.5);
-  box-shadow: 5px 5px 0px black;
-}
+@theme inline {
+  --color-main: var(--main);
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground: var(--foreground);
+  --color-main-foreground: var(--main-foreground);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  --spacing-boxShadowX: 4px;
+  --spacing-boxShadowY: 4px;
+  --spacing-reverseBoxShadowX: -4px;
+  --spacing-reverseBoxShadowY: -4px;
+  --radius-base: 5px;
+  --shadow-shadow: var(--shadow);
+  --font-weight-base: 500;
+  --font-weight-heading: 700;
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .text-input, .emotion-output , .predict-button {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+  --font-unbounded: "unbounded";
+}
+  
+@layer base {
+  body {
+    @apply text-foreground font-base bg-background;
   }
-}
 
-.predict-button {
-  width : 180px;
-  height : 40px;
-  font-size: 18px;
-  font-family: "Roboto Mono";
-  font-weight: 500;
-  background: rgba(250,250,250,0.7);
-  color : black;
-  margin-top : 30px;
-  box-shadow: 5px 5px 0px black;
-}
-
-.predict-button:hover {
-  background-color: #f9ca24;
-  cursor : pointer;
-}
-.emotion-output{
-  
-  font-family: "Roboto Mono";
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center;
-  align-items: center;
-  padding: 5px 10px;
-  margin-top: 30px;
-  border : 2px solid rgb(0, 0, 0);
-  color : rgb(0, 0, 87);
-  background: rgba(250,250,250,0.7);
-  box-shadow: 4px 4px 0px black;
-  
-}
-
-.pg-header{
-  font-family : 'unbounded', cursive;
-  font-size: 24px;
-  box-shadow: 2px 2px rgba(128, 128, 128,0.4);
-  width : 100vw;
-  text-align: center;
-  text-shadow: -2px 2px 0px white;
-}
-
-.pg-header:hover {
-  cursor :default
-}
-
-.pg-footer {
-  font-family: "Roboto Mono";
-  font-size: 14px;
-  padding : 0px;
-  margin : 0px;
-}
-
-.App {
-  display  :flex;
-  height : 100vh;
-  overflow-y : hidden;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-
-@media only screen and (max-width: 480px) {
-
-.pg-header{
-  font-size: 14px;
-}
-
-.text-input{
-  width : 90vw;
-  height : 50px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.emotion-output{
-  font-size: 20px;
-  font-weight: 700;
-}
+  h1, h2, h3, h4, h5, h6{
+    @apply font-heading;
+  }
 }
