@@ -1,8 +1,10 @@
 import joblib
-from pyscript import document, display
+from pyscript import when, document, display
 from sklearn.svm import LinearSVC
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
+
+
 
 try:
     with open('lsvc_model.pkl', 'rb') as f:
@@ -20,7 +22,7 @@ def predict_t(text):
     y_new = lsvc.predict(X_new)
     return y_new[0]
 
-def run_prediction(event):
+def run_prediction_lsvc(event):
     input_element = document.querySelector("#text-input")
     output_div = document.querySelector("#emotion-output")
 
