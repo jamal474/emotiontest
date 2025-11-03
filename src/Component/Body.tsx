@@ -36,9 +36,9 @@ const Body = () => {
 
     return (
         <div className = "w-full h-dvh grid grid-cols-16 gap-3 md:grid-cols-8 md:gap-4 justify-items-center content-center items-center [background-size:40px_40px] [background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]">
-            <Input className = "h-fit text-sm lg:text-2xl col-start-2 col-span-8 self-end md:self-auto md:col-start-2 md:col-span-4 shadow-shadow" type="text" id="text-input" placeholder="Enter some text"/>
+            <Input className = "h-fit text-sm lg:text-2xl col-start-2 col-span-14 self-end md:self-auto md:col-start-2 md:col-span-4 shadow-shadow" type="text" id="text-input" placeholder="Enter some text"/>
             <Select value={method} onValueChange={setMethod}>
-                <SelectTrigger className="shadow-shadow w-[140px] md:w-[220px] lg:w-[280px] col-span-7 md:col-span-2 text-xs md:text-sm lg:text-xl h-fit flex-none ">
+                <SelectTrigger className="shadow-shadow md:w-[220px] lg:w-[280px] col-start-2 col-span-14 md:col-span-2 text-xs md:text-sm lg:text-xl h-fit flex-none ">
                     <SelectValue placeholder="Select a Training Method"/>
                 </SelectTrigger>
                 <SelectContent>
@@ -48,10 +48,10 @@ const Body = () => {
                     </SelectGroup>
                 </SelectContent>
             </Select>
-            <ScrollArea id="emotion-output" className= "col-start-2 col-span-8 md:col-span-4 md:col-start-2 justify-self-end rounded-base h-10 md:h-fit w-[150px] md:w-[250px] lg:w-[350px] text-xs md:text-sm lg:text-xl border-2 border-border bg-main p-2 shadow-shadow">
+            <ScrollArea id="emotion-output" className= "justify-items-stretch w-full col-start-2 col-span-7 md:col-span-4 md:col-start-2 md:justify-self-end rounded-base h-9 md:h-fit md:w-[250px] lg:w-[350px] text-xs md:text-sm lg:text-xl border-2 border-border bg-main p-2 shadow-shadow">
                 Emotion : 
             </ScrollArea>
-            <Button className = "text-xs md:text-sm lg:text-xl w-[140px] md:w-[220px] lg:w-[280px] col-span-7 md:col-span-2 hover:cursor-pointer" id="predict-button" py-click={state[method]?.runner}>Predict Emotion</Button>
+            <Button className = "text-xs md:text-sm lg:text-xl w-full md:w-[220px] lg:w-[280px] h-9 md:h-full col-span-7 md:col-span-2 hover:cursor-pointer" id="predict-button" py-click={state[method]?.runner}>Predict Emotion</Button>
 
         </div>
     );
