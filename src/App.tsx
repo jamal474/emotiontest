@@ -1,9 +1,11 @@
 import './App.css';
+import { useEffect } from 'react';
 import Header from './page/Header'
 import Body from './page/Body'
 import Footer from './page/Footer'
 
 function App() {
+  
   return (
     <div className="App">
       <Header/>
