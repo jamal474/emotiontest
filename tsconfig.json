@@ -4,16 +4,20 @@
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
-    // "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "es2015",
-    "target": "es2015",
-    "types": [],
+    "module": "esnext",
+    "target": "es2022",
+    "typeRoots": [
+      "./node_modules/@types",
+    ],
+    "types": [
+      "node",
+    ],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -43,6 +47,7 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
   },
   "exclude": ["node_modules", "vite.config.ts"]

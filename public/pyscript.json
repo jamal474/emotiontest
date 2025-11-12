@@ -1,9 +1,0 @@
-{
-    "packages": ["scikit-learn", "joblib", "numpy"],
-    "fetch" : [
-        {
-            "files": ["lsvc_model.pkl", "tfidf_vectorizer.pkl"],
-            "to_directory": "/"
-        }
-    ]
-}

@@ -11,6 +11,9 @@
 # production
 /build
 
+/public/*.whl
+/src/models/dist/*
+
 # misc
 .DS_Store
 .env.local
