@@ -105,7 +105,7 @@ const Body = () => {
     setIsLoadingPrediction(true);
 
     try {
-      const result = await pyodideService.predict(currentModel, inputText);
+      const result = await pyodideService.predict(`${currentModel}.pkl`, inputText);
 
       if (result.status === 'success') {
         setPrediction(result.prediction[0]);

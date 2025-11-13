@@ -1,7 +1,4 @@
-# pyproject.toml
-
 [build-system]
-# Tells Python we are using 'setuptools' to build
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
@@ -11,21 +8,13 @@ version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.8"
 
-# --- THIS IS THE KEY ---
-# Pyodide's `loadPackage` will read this and automatically
-# install scikit-learn for you.
 dependencies = [
     "scikit-learn"
 ]
 
 [tool.setuptools]
-# Tells setuptools our packages are in the 'src' directory
 package-dir = {"" = "src"}
-# Find all packages in 'src' (it will find 'model_api')
 packages = {find = {where = ["src"]}}
 
-# --- THIS IS THE OTHER KEY ---
-# This tells setuptools to include non-Python files
-# found inside your package directory.
 [tool.setuptools.package-data]
 model_api = ["*.pkl"]
