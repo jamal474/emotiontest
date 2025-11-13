@@ -13,7 +13,7 @@
 
 #python package files
 /public/*.whl
-/src/models/dist/*
+src/models/dist/
 
 # misc
 .DS_Store

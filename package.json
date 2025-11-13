@@ -31,7 +31,7 @@
     "start": "npm run build:python && npm run copy:assets && vite",
     "build": "npm run build:python && npm run copy:assets && vite build",
     "serve": "vite preview",
-    "build:python": "cd src/models && python -m build",
+    "build:python": "cd src/models && python -m pip install --user build && python -m build",
     "copy:assets": "ts-node src/copyAsset"
   },
   "browserslist": {
