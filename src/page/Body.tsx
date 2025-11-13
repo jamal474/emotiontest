@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Spinner } from "@/components/ui/spinner"
 import { Progress } from "@/components/ui/progress"
-import BodySkeleton from './BodySkeleton';
+import BodySkeleton from '../components/BodySkeleton';
 import { useState, useEffect, useRef } from 'react';
 import { pyodideService } from '@/services/pyodideService';
 
