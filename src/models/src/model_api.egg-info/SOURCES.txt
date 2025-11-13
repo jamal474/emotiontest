@@ -1,7 +1,6 @@
 pyproject.toml
 src/model_api/__init__.py
 src/model_api/api.py
-src/model_api/lsvc_pipeline.pkl
 src/model_api.egg-info/PKG-INFO
 src/model_api.egg-info/SOURCES.txt
 src/model_api.egg-info/dependency_links.txt
