@@ -64,7 +64,7 @@
 
   --font-unbounded: "unbounded";
 }
-  
+
 @layer base {
   body {
     @apply text-foreground font-base bg-background;

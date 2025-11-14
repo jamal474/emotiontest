@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress"
 import BodySkeleton from '../components/BodySkeleton';
 import { useState, useEffect, useRef } from 'react';
 import { pyodideService } from '@/services/pyodideService';
+import { toast } from "sonner"
 
 import {
   Select,
@@ -51,14 +52,19 @@ const Body = () => {
             .then(() => {
                 setProgress(val => {return 100;});
                 setIsPyReady(true);
+                toast.success("Training Environment Created Successfully.")
             })
             .catch(err => {
                 console.error("Failed to initialize Pyodide service:", err);
                 setError("Python environment failed to load.");
                 setProgress(val => {return 100;});
+                toast.error("Oops, looks like something broke!")
             });
-    }, []); 
 
+        // const progressInterval = setInterval(() => {
+        //     toast.success("message");
+        //   }, 3000);
+    }, []); 
   const handleModelChange = async (modelId: string) => {
     if (!modelId) {
       setCurrentModel('');
@@ -85,8 +91,14 @@ const Body = () => {
     try {
       const result = await pyodideService.loadModel(`${modelId}.pkl`);
 
-      if (result.status === 'loaded' || result.status === 'cached') {
-      } else {
+      if (result.status === 'loaded') {
+        toast.success("Model Loaded Successfully.")
+      } 
+      else if (result.status === 'cached')
+      {
+        toast.success("Model Already Loaded.")
+      }
+      else {
         setError(result.message || "Failed to load model.");
       }
     } catch (err: any) {
@@ -122,7 +134,7 @@ const Body = () => {
     return (
         <>
         { !isPyReady || isLoadingModel ? <Progress value={progress} className="fixed z-0 h-1.5 col-span-8" /> : ""} 
-        <div className = "w-full h-dvh grid grid-cols-16 gap-3 md:grid-cols-8 md:gap-4 justify-items-center content-center items-center [background-size:40px_40px] [background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]">
+        <div className = "w-full min-h-dvh grid grid-cols-16 gap-3 md:grid-cols-8 md:gap-4 justify-items-center content-center items-center [background-size:40px_40px] [background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]">
             {
                 !isPyReady
                 ?
