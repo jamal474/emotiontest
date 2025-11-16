@@ -1,15 +1,11 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
       "@/*": ["./src/*"]
     },
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
     "module": "esnext",
     "target": "es2022",
     "typeRoots": [

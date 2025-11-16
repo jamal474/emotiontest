@@ -1,29 +1,17 @@
-/// <reference lib="webworker" />
-
-// NOTE: Since this file will be compiled by your build tool,
-// we use dynamic import to get the Pyodide module correctly inside the worker.
-
-// --- Type Definitions (Needed because Pyodide is loaded dynamically) ---
 interface LoadModelPayload { modelName: string; }
 interface PredictPayload { modelName: string; inputText: string; }
 
-// Incoming message types
 type WorkerEventData =
   | { type: 'INIT'; id: number }
   | { type: 'LOAD_MODEL'; id: number; payload: LoadModelPayload }
   | { type: 'PREDICT'; id: number; payload: PredictPayload };
 
-// Outgoing message types
 type WorkerPostMessage =
   | { type: 'READY'; id: number }
   | { type: 'PROGRESS'; payload: string }
   | { type: 'RESULT'; id: number; payload: any }
   | { type: 'ERROR'; id: number; payload: string };
 
-// --- Worker Implementation ---
-
-// The Pyodide instance type cannot be imported easily in workers, so we define a basic structure
-// The `any` type is needed here for compatibility with dynamically loaded Pyodide globals
 let pyodide: any = null; 
 
 const postMessage = (msg: WorkerPostMessage) => self.postMessage(msg);
@@ -75,7 +63,7 @@ self.onmessage = async (event: MessageEvent<WorkerEventData>) => {
     switch (type) {
       case 'LOAD_MODEL': {
         const { payload } = event.data;
-        // Blocking Python code runs here, safely off the main UI thread.
+        
         pyodide.globals.set("js_model_name", payload.modelName);
         const resultProxy = pyodide.runPython(`
           import model_api.api

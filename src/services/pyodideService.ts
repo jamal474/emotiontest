@@ -18,17 +18,15 @@ class PyodideService {
     this.initPromise = new Promise((resolve, reject) => {
       this.onProgress = options?.onProgress || (() => {});
       
-      // --- THE FIX: Load worker as an ES Module ---
-      // This path depends on your setup, but using URL/import.meta.url is the standard way
       this.worker = new Worker(
         new URL('../workers/pyodideWorker.ts', import.meta.url),
-        { type: "module" } // CRITICAL: Loads the file as an ES Module
+        { type: "module" }
       );
 
       this.worker.onmessage = (event) => {
         const { type, payload, id } = event.data;
 
-        if (type === "READY" && id === 0) { // 0 is our hardcoded 'init' ID
+        if (type === "READY" && id === 0) {
           console.log("JS: Pyodide Service is ready.");
           resolve();
         }
@@ -46,11 +44,11 @@ class PyodideService {
         }
         else if (type === "ERROR") {
           console.error("Error from Pyodide worker:", payload);
-          // If it's an init error
+          
           if (id === 0) {
             reject(new Error(payload));
           }
-          // If it's a request error
+          
           const request = this.pendingRequests.get(id);
           if (request) {
             request.reject(new Error(payload));
@@ -59,7 +57,7 @@ class PyodideService {
         }
       };
 
-      this.worker.postMessage({ type: "INIT", id: 0 }); // Use 0 for the init task
+      this.worker.postMessage({ type: "INIT", id: 0 });
     });
 
     return this.initPromise;
