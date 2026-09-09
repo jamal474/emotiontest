@@ -1,0 +1,31 @@
+# Netlify serves this site under /emotion/, matching the path it is reached
+# by on the short domain (https://<short-domain>/emotion/). Vite builds into
+# build/emotion, and `publish` stays at build/, so the URL layout and the
+# on-disk layout are identical — the Cloudflare worker in front can forward
+# requests without rewriting a single path segment.
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# "/emotion" with no trailing slash would otherwise fall through to the
+# catch-all below and be rewritten to "/emotion/emotion".
+[[redirects]]
+  from = "/emotion"
+  to = "/emotion/"
+  status = 301
+
+# SPA fallback, scoped to the sub-path. Real files still win over this rule,
+# so hashed assets under /emotion/assets/ are served normally.
+[[redirects]]
+  from = "/emotion/*"
+  to = "/emotion/index.html"
+  status = 200
+
+# Anything at the old root — including a bare visit to this site's
+# .netlify.app host — lands on the app's real home.
+[[redirects]]
+  from = "/*"
+  to = "/emotion/:splat"
+  status = 301
+  force = true

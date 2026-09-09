@@ -32,7 +32,15 @@ async function initPyodide(onProgress: (msg: string) => void): Promise<boolean> 
     const micropip = pyodide.pyimport("micropip");
 
     onProgress("Installing 'model_api' wheel...");
-    await micropip.install("/model_api-0.1.0-py3-none-any.whl");
+    // The wheel is a public/ asset, so it moves with the app's base path
+    // (/emotion/ in production, / in a root deployment). Resolve it against
+    // the origin rather than the worker script's own URL, which lives a
+    // directory deeper in build output.
+    const wheelUrl = new URL(
+      `${import.meta.env.BASE_URL}model_api-0.1.0-py3-none-any.whl`,
+      self.location.origin
+    ).href;
+    await micropip.install(wheelUrl);
 
     onProgress("Pre-loading Python API...");
     pyodide.runPython("import model_api.api");

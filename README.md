@@ -17,6 +17,24 @@ This project uses a modern polyglot stack by integrating front-end frameworks wi
 | **Frontend** | **React** | `^18.2.0` | JavaScript library for building the UI and the input/output components (`Body.jsx`). |
 | **Build Tooling** | **Vite** | `^7.1.9` | Used for development server (`npm start`) and optimized production builds. |
 
+## Mount path
+
+The app is served from `/emotion/`, not from a domain root: it is reached as
+`https://sabo.sh/emotion/…` through a Cloudflare worker that proxies requests
+without rewriting the path, so the origin has to answer on `/emotion/…` itself.
+
+`base` in `vite.config.ts` is the single source of truth — it sets every
+emitted asset URL. Vite builds into `build/emotion` while Netlify publishes
+`build/`, so the files sit on disk at exactly the paths they are served from,
+and `textemotiondetection.netlify.app/emotion/` renders the same page as the
+short domain.
+
+One thing does not follow `base` on its own: the **Pyodide wheel**. It is
+fetched by URL from inside the web worker, so `pyodideWorker.ts` builds that
+URL from `import.meta.env.BASE_URL` rather than a leading slash — a bare
+`/model_api-…whl` would be looked for at the domain root, where a different
+project lives.
+
 ## Installation and Setup Guide
 
 ### Prerequisites
